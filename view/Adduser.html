@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>失物招领_注册</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<style type="text/css">
+		body{
+			background: url(../img/Add_background.jpg);
+		}
+		.navbar{
+			background: #428BCA;
+		}
+		#add{
+			margin: auto;
+			width: 550px;
+			height: 500px;
+			background: white;
+			border-radius: 5%;
+		}
+	</style>
+	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/lost_and_found.js"></script>
+</head>
+<body>
+	<!--导航栏区域-->
+	<nav class="navbar navbar-default" role="navigation">
+		<!-- 当class="container"时，居中显示，当class="container-fluid"时向左对齐显示 -->
+    	<div class="container"> 
+    		<div class="navbar-header">
+    			<!--当屏幕大小出现变化是出现响应式布局，三个横杆显示-->
+        		<button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+           			<span class="sr-only">响应式导航</span>
+           			<span class="icon-bar"></span>
+           			<span class="icon-bar"></span>
+            		<span class="icon-bar"></span>
+        		</button>
+        		<!--商标logo区域-->
+        		<a class="navbar-brand" href="../control/IndexControl.php" style="color: white; font-size: 18px; "><span class="glyphicon glyphicon-bullhorn"></span>&nbsp Lost And Found</a>
+    		</div>
+
+   			<div class="collapse navbar-collapse" id="example-navbar-collapse">
+        		<ul class="nav navbar-nav" style="font-size: 18px;">
+            		<li><a href="../control/IndexControl.php" target="_self" style="color: white">首页</a></li>
+            		<li><a href="../control/FindControl.php" target="_self" style="color: white">捡到东西</a></li>
+            		<li><a href="../control/LostControl.php" target="_self" style="color: white">丢了东西</a></li>
+            		<li><a href="../control/MyControl.php" target="_self" style="color: white">我的</a></li>
+            		<li><a href="../control/VIewbackControl.php" target="_self" style="color: white">意见反馈</a></li>
+        		</ul>
+        		<ul class="nav navbar-nav navbar-right" style="font-size: 15px;">
+      				<li><a class="active" href="../control/AdduserControl.php" target="_blank" style="color: #666666; background: white;"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+      				<li><a href="../control/loginControl.php" target="_self" style="color: white"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+    			</ul>
+    		</div>
+    	</div>
+	</nav>
+	<div id="add">
+		<table class="table">
+		  <tbody>
+		    <tr>
+		      <td><h2><b style="color: red;">|</b>用户注册：</h2></td>
+		    </tr>
+		    <tr>
+		      <td>
+				<form class="form-horizontal" role="form"  method="post">
+				  <div class="form-group">
+				    <label for="firstname" class="col-sm-2 control-label">用户名：</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="firstname" name="user" placeholder="请输入用户名">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">密码：</label>
+				    <div class="col-sm-6">
+				      <input type="password" class="form-control" id="pwd0" name="password" placeholder="请输入密码">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">确认密码：</label>
+				    <div class="col-sm-6">
+				      <input type="password" class="form-control" id="pwd1" onblur="checkPwd()" placeholder="请再次输入密码">
+				    </div>
+				    <div id="showPwdError" class="error" style="width: 160px;height: 34px; float: left; display: none;line-height: 34px;color: white; background: #428BCA;text-align: center;">密码不一致...</div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">电话：</label>
+				    <div class="col-sm-6">
+				      <input type="text" id="phone" onblur="checkPhone()"class="form-control" name="phone" placeholder="请输入联系电话">
+				    </div>
+				    <div id="showPhoneError" class="error" style="width: 160px;height: 34px; float: left; display: none;line-height: 34px;color: white; background: #428BCA;text-align: center;">电话格式错误...</div>
+				  </div>
+				  <div class="form-group">
+				    <label for="lastname" class="col-sm-2 control-label">邮箱：</label>
+				    <div class="col-sm-6">
+				      <input type="text" id="email" onblur="checkEmail()" class="form-control" name="email" placeholder="请输入邮箱">
+				    </div>
+				    <div id="showEmailError" class="error" style="width: 160px;height: 34px; float: left; display: none;line-height: 34px;color: white; background: #428BCA;text-align: center;">邮箱格式错误...</div>
+				  </div>
+					  <div style="margin-left: 80px; margin-top: 50px;">
+						    <div class="form-group" style="float: left">
+						    	<div class="col-sm-offset-2 col-sm-10">
+						        	<button id="reset" type="reset" style="background: #428BCA;" class="btn btn-default">重置</button>
+						    	</div>
+						    </div>
+						   	<div class="form-group" style="float: left; margin-left:30px; ">
+							    <div class="col-sm-offset-2 col-sm-10">
+							        <button type="submit" name="sm" onclick="return checkSm();" style="background: #428BCA;" class="btn btn-default">立即注册</button>
+							    </div>
+						    </div>
+					  </div>
+				</form>
+				</td>
+		    </tr>
+		  </tbody>
+		</table>
+		<div id="login" style="margin-left: 250px;">
+			<h4>已经注册？直接 <a href="../control/loginControl.php">登录</a></h4>
+		</div>
+	</div>
+</body>
+</html>
